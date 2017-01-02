@@ -1,0 +1,5 @@
+.pioenvs
+.piolibdeps
+*-bak
+*.bak
+*-cache.lib

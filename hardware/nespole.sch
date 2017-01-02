@@ -1,0 +1,152 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L ATTINY25-20SSU IC?
+U 1 1 5866A95A
+P 6050 2150
+F 0 "IC?" H 6050 2757 50  0000 C CNN
+F 1 "ATTINY25-20SSU" H 6050 2666 50  0000 C CNN
+F 2 "SO8" H 6050 2575 50  0000 C CIN
+F 3 "" H 6050 2150 50  0000 C CNN
+	1    6050 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L AP1117 U?
+U 1 1 5866AA3E
+P 2700 1900
+F 0 "U?" V 2654 2130 50  0000 L CNN
+F 1 "AP1117" V 2745 2130 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-223" H 2700 1550 50  0001 C CNN
+F 3 "" H 2800 1650 50  0000 C CNN
+	1    2700 1900
+	0    1    1    0   
+$EndComp
+$Comp
+L MJE13009G Q?
+U 1 1 5866AABF
+P 3800 3050
+F 0 "Q?" V 4086 3050 50  0000 C CNN
+F 1 "MJE13009G" V 4177 3050 50  0000 C CNN
+F 2 "TO-220" V 4268 3050 50  0000 C CIN
+F 3 "" H 3800 3050 50  0000 L CNN
+	1    3800 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L R R?
+U 1 1 5866AB9C
+P 3800 2550
+F 0 "R?" H 3870 2596 50  0000 L CNN
+F 1 "270" H 3870 2505 50  0000 L CNN
+F 2 "" V 3730 2550 50  0000 C CNN
+F 3 "" H 3800 2550 50  0000 C CNN
+	1    3800 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 2300 3800 2300
+Wire Wire Line
+	3800 2300 3800 2400
+Wire Wire Line
+	3800 2700 3800 2850
+Wire Wire Line
+	4000 3150 4650 3150
+Wire Wire Line
+	4650 3150 4650 3600
+Text Label 4650 3350 0    60   ~ 0
+to_relay
+Wire Wire Line
+	3300 3150 3600 3150
+Wire Wire Line
+	3300 1200 3300 3150
+$Comp
+L +5V #PWR?
+U 1 1 5866AEB4
+P 3300 1200
+F 0 "#PWR?" H 3300 1050 50  0001 C CNN
+F 1 "+5V" H 3315 1373 50  0000 C CNN
+F 2 "" H 3300 1200 50  0000 C CNN
+F 3 "" H 3300 1200 50  0000 C CNN
+	1    3300 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 1300 7400 1300
+Wire Wire Line
+	7400 1300 7400 1900
+Connection ~ 3300 1300
+$Comp
+L GND #PWR?
+U 1 1 5866AF49
+P 7400 2550
+F 0 "#PWR?" H 7400 2300 50  0001 C CNN
+F 1 "GND" H 7405 2377 50  0000 C CNN
+F 2 "" H 7400 2550 50  0000 C CNN
+F 3 "" H 7400 2550 50  0000 C CNN
+	1    7400 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 2550 7400 2400
+Wire Wire Line
+	2700 1600 2700 1500
+Wire Wire Line
+	2700 1500 3300 1500
+Connection ~ 3300 1500
+$Comp
+L GND #PWR?
+U 1 1 5866B076
+P 2250 1900
+F 0 "#PWR?" H 2250 1650 50  0001 C CNN
+F 1 "GND" H 2255 1727 50  0000 C CNN
+F 2 "" H 2250 1900 50  0000 C CNN
+F 3 "" H 2250 1900 50  0000 C CNN
+	1    2250 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 1900 2400 1900
+$EndSCHEMATC
