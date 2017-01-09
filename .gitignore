@@ -7,3 +7,8 @@ fp-lib-table
 .DS_Store
 _saved*
 _autosave*
+driver/.Python
+driver/src
+driver/lib
+driver/bin
+driver/include
