@@ -1,4 +1,4 @@
-update=Tuesday, January 03, 2017 'AMt' 08:14:41 AM
+update=Thursday, January 26, 2017 'AMt' 01:11:24 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -61,3 +61,7 @@ LibName29=valves
 LibName30=maxim-ic
 LibName31=ch340g
 LibName32=IRF
+LibName33=max6675
+LibName34=ch341t
+LibName35=tinkerforge
+LibName36=as1108
