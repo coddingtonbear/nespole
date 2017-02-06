@@ -18,7 +18,7 @@ do that.
 * AS1108WL common-cathode LED array controller or equivalent; ~$4
 * PEC11S Rotary encoder w/ button; ~$3
 * CH340G USB-Serial UART adapter; ~$1 -- not strictly necessary if you're comfortable programming the chip via the SPI bus
-* CLX6A 3.5mm x 3.5mm RGB LED; <\$1
+* CLX6A 3.5mm x 3.5mm RGB LED; &lt;$1
 * A relay (for turning the heating element on/off)
 * A variety of passives, a diode, a logic-level p-channel mosfet, a logic-level n-channel mosfet (all SOT-23), etc; see the schematic for details.
 
@@ -39,7 +39,7 @@ including:
 
 The included schematics and layout are both correct (as far as I know), but
 if you observe the photos linked here, you'll see that they differ in slight
-ways.  If you carefully observe, you'll see that I've had to correct several
+ways.  If you look carefully, you'll see that I've had to correct several
 oversights by using bodge wires or, in two cases, installing capacitors that
 I neglected to include in the original design.  The attached schematic has,
 though, been corrected to account for these oversights.
