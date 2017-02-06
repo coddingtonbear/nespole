@@ -62,6 +62,7 @@ void setup() {
     pinMode(CS_LED, OUTPUT);
     pinMode(EN_RELAY, OUTPUT);
 
+    digitalWrite(EN_RELAY, LOW);
     setLedColor(0, 0, 10);
 
     targetTemperature = EEPROM.read(TARGET_EEPROM_ADDRESS);
@@ -190,16 +191,18 @@ void disableRelay() {
 
 
 void loop() {
-    delay(250);
     currentTemperature = getTemperature();
-    Serial.println(millis());
-    if(millis() > showTargetUntil) {
-        setDisplayValue(currentTemperature);
+    if(millis() < showTargetUntil) {
+        disableRelay();
+        setLedColor(10, 10, 10);
+        setDisplayValue(targetTemperature);
+    } else {
         if(
             (currentTemperature < targetTemperature) &&
             allowRelay &&
             thermocoupleAttached
         ) {
+            setDisplayValue(currentTemperature);
             enableRelay();
         } else if(!thermocoupleAttached) {
             for(int i = 1; i<=4; i++) {
@@ -207,11 +210,9 @@ void loop() {
             }
             disableRelay();
         } else {
+            setDisplayValue(currentTemperature);
             disableRelay();
         }
-    } else {
-        disableRelay();
-        setLedColor(10, 10, 10);
-        setDisplayValue(targetTemperature);
     }
+    delay(250);
 }
