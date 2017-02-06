@@ -50,7 +50,9 @@ In case you're curious about the errors I made, they were the following:
   did not notice this problem until very late in the game when I was trying
   to diagnose what was causing some erratic behavior.  The root cause of this
   was that I did not pay close-enough attention to which pin was the ADC's
-  VCC and which pin was the microcontroller's normal VCC.
+  VCC and which pin was the microcontroller's normal VCC.  Really, though,
+  there should be bypass capacitors for both, so I've updated the design
+  to include them for both VCCs.
 * Neglected to connect the CH340G's GND pin to anything at all.
 * Mis-connected the N-Channel mosfet used for switching the laminator's
   relay.  I misread the datasheet and had swapped the source and drain
