@@ -37,6 +37,8 @@ including:
 
 ## Schematics
 
+![](https://s3-us-west-2.amazonaws.com/coddingtonbear-public/github/nespole/nespole.svg)
+
 The included schematics and layout are both correct (as far as I know), but
 if you observe the photos linked here, you'll see that they differ in slight
 ways.  If you look carefully, you'll see that I've had to correct several
