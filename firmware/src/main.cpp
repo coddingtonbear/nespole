@@ -18,12 +18,14 @@
 
 SPISettings slow(500000, MSBFIRST, SPI_MODE0);
 
+#define SERIAL_TEMPERATURE_INTERVAL 100
 
+unsigned long lastPrinted = 0;
 volatile float currentTemperature = 0;
 volatile float targetTemperature = 0;
 volatile float allowRelay = false;
 volatile float thermocoupleAttached = false;
-volatile float relayEnabled = false;
+bool relayEnabled = false;
 
 volatile unsigned long showTargetUntil = 0;
 
@@ -41,6 +43,7 @@ ISR(BADISR_vect)
 
 void setup() {
     Serial.begin(9600);
+    Serial.println("Nespole (2021-10-05)");
     if(MCUSR) {
         Serial.print("System restarted by reset: ");
         Serial.println(MCUSR, BIN);
@@ -89,6 +92,7 @@ void onButtonPressed() {
         allowRelay = false;
     }
     sei();
+    return allowRelay;
 }
 
 
@@ -180,14 +184,18 @@ void setDisplayValue(float value) {
 
 
 void enableRelay() {
+    relayEnabled = true;
     setLedColor(10, 0, 0);
     digitalWrite(EN_RELAY, HIGH);
 }
 
 void disableRelay() {
+    relayEnabled = false;
     setLedColor(0, 0, 0);
     digitalWrite(EN_RELAY, LOW);
 }
+
+char incomingText[100] = "\0";
 
 
 void loop() {
@@ -197,6 +205,40 @@ void loop() {
         setLedColor(10, 10, 10);
         setDisplayValue(targetTemperature);
     } else {
+        if(millis() - lastPrinted > SERIAL_TEMPERATURE_INTERVAL) {
+            lastPrinted = millis();
+            Serial.print("Current:\t");
+            Serial.print(currentTemperature);
+            Serial.print("\tTarget:\t");
+            Serial.print(targetTemperature);
+            if(allowRelay) {
+                Serial.print("\t(enabled)");
+            }
+            if(relayEnabled) {
+                Serial.print("\t(heating)");
+            }
+            if (!thermocoupleAttached) {
+                Serial.print("\t(no thermocouple!)");
+            }
+            Serial.println();
+        }
+        if(Serial.available()) {
+            char incomingChar = Serial.read();
+            if(incomingChar == '\n') {
+                if(strlen(incomingText) == 1) {
+                    onButtonPressed();
+                } else {
+                    targetTemperature = atoi(incomingText);
+                    Serial.print("Temperature set to ");
+                    Serial.print(targetTemperature);
+                    Serial.println(" by serial command.");
+                    incomingText[0] = '\0';
+                }
+            } else {
+                strncat(incomingText, &incomingChar, 1);
+            }
+        }
+
         if(
             (currentTemperature < targetTemperature) &&
             allowRelay &&
